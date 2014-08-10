@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/home/dzhao/fusionfs/src/fusionfs /tmp /home/dzhao/fusion_mount

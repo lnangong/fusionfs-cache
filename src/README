@@ -1,0 +1,2 @@
+*Add the following library paths before compilation 
+	e.g. export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:/home/dongfang/fusionFS/src/ffsnet/:/home/dongfang/fusionFS/src/udt/src

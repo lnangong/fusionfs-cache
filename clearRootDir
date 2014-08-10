@@ -1,0 +1,2 @@
+rm -r /home/dzhao/fusion_root/*
+rm -r /home/dzhao/fusion_root/.*

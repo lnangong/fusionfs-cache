@@ -1,0 +1,6 @@
+#!/bin/sh
+#start the service for file transfer
+/home/dzhao/fusionfs/src/ffsnet/ffsnetd 2>&1 1>/dev/null &  
+
+#start the service for ZHT server
+/home/dzhao/fusionfs/src/zht/bin/server_zht 50000 /home/dzhao/fusionfs/src/zht/neighbor /home/dzhao/fusionfs/src/zht/zht.cfg TCP 2>&1 1>/dev/null &

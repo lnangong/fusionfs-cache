@@ -1,0 +1,15 @@
+#!/bin/sh
+
+cd ./src/zht
+make
+
+cd ../udt
+make 
+
+cd ../ffsnet
+make
+
+cd ..
+make
+
+echo =====Compile succeed.========

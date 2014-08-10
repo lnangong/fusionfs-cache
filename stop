@@ -1,0 +1,4 @@
+#!/bin/sh
+
+
+fusermount -u /home/dzhao/fusion_mount

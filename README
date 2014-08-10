@@ -1,0 +1,70 @@
+Author: dongfang.zhao@hawk.iit.edu
+
+What is FusionFS
+	- In short, FusionFS is a completely distributed file system, that said, nothing (at all) is centralized
+		including meta data management. 
+
+What is working
+	- File create/open/read/write/close/remove
+	- Direcotry create/read/remove
+	
+What is NOT working (We might add support for the followings if some applications require them)
+	- File rename/link/slink
+	- Directory rename
+	- Other POSIX interfaces 
+
+How to install fusionfs:
+	1) Make sure all dependent libraries are specified, e.g. echo $LD_LIBRARY_PATH 
+		:/usr/local/lib:/home/dongfang/fusionFS/src/ffsnet/:/home/dongfang/fusionFS/src/udt4/src
+	2) Install FUSE for your Linux distribution
+	3) Install Google Protocol Buffer 
+	4) Go to ./src/zht/ and run Makefile
+	5) Go to ./src/udt/ and run Makefile
+	6) Go to ./src/ffsnet/, run Makefile
+	7) Go to ./src, run Makefile
+
+How to use fusionfs on servers:
+	1) `rm -rf fusion_root/*` to cleanup your scratch data
+	2) ./start_service to start the backup services
+	3) ./start to run fusionfs
+	4) ./stop to stop fusionfs
+	5) ./stop_service to stop all services
+
+How to use fusionfs on clusters:
+	0) Specify list of nodes on /src/zht/neighbor
+	1) ./cleanAll to `make clean` everything
+	2) ./compileAll to `make` everything
+	3) ./start_service_all to start services on all nodes
+	4) ./start_all to start fusionfs on all nodes
+	5) ./stop_all to stop all fusionfs on all nodes
+	6) ./stop_service_all to stop all services on all nodes
+
+How to test fusionfs with IOZone:
+	1) It's trivial to run IOZone on the local node
+	2) To test multiple nodes:
+		2.1) Create a file on node A, say `touch testfile1`
+		2.2) On node B, run: `iozone -awpe -s 1m -r 4k -i 0 -i 1 -i 2 -f testfile1`
+		2.3) Now check back in node A and verify testfile1 has 1MB by `ls testfile1 -lh`
+
+Update history:
+	07/22/2012: fixed a bug in ffsnet.c::_getaddr(); tested IOzone on two nodes
+	07/21/2012: update ZHT for new _lookup() signature and return code, restructure code and update Makefiles
+	07/20/2012: major changes, tested on two nodes Fedora and Fusion
+	07/17/2012: remote file removal supported and tested on two nodes
+	07/16/2012: all one-node test cases have passed over two nodes - Fedora and Fusion.
+	07/15/2012: started testing on single node (test_plan.txt added): directory passed; files on root directory passed 
+	07/09/2012: clean up the warnings
+	07/05/2012: hsearch replaced by ZHT
+  	06/27/2012: read with UDT
+	06/01/2012: read/write with LFTP
+	05/22/2012: read/write with SCP
+
+TODO:
+	*[important]Support remote rename
+		- Add service to ffsnetd `rename file`, or other design?
+	*[important]how to select and maintain replica nodes
+	
+Note:
+    *If you make your desktop run ffsnetd service, please make sure no firewall is blocking this service from outside request.
+		- In Fedora, you can turn off firewall by `sudo service iptables stop`
+		- Note that there's no firewall inside IBM Bluegene

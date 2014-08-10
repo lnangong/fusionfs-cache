@@ -1,0 +1,16 @@
+cd ./src
+make clean
+
+cd ./zht
+make clean
+
+cd ../ffsnet
+make clean
+
+cd ../udt
+make clean
+
+cd ../../
+rm fusionfs.log
+
+echo =========Clean succeed==========

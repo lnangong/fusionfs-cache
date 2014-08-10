@@ -1,0 +1,15 @@
+07/21/2012, dongfang.zhao@hawk.iit.edu
+
+This is an example to show how to call ffsnet C++ methods from a C file.
+
+The deamon process (ffsnetd.cpp) on the server, and the C++ library source code (ffsnet.cpp and ffsnet.h) are the same as before as in the ffsnet directory.
+
+There is a C wrapper (ffsnet_bridger.cpp) to interpret the incoming C calls and redirect these requests to the ffsnet C++ library.
+
+The new test file is in C, i.e. ffsnet_test_c.c
+
+The header comment of each source file explains how to compile with dynamic library (shared objects)
+
+Before running the test file, don't forget to export LD_LIBRARY_PATH, i.e.:
+export LD_LIBRARY_PATH=../udt/src:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH
