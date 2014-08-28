@@ -3,7 +3,7 @@
 // its data structures.  This file contains macros and functions to
 // accomplish this.
 
-#include "params.h"
+#include "royparams.h"
 
 #include <fuse.h>
 #include <stdarg.h>
@@ -36,6 +36,9 @@ FILE *log_open()
 
 void log_msg(const char *format, ...)
 {
+   if (LOG_OFF)
+                return;
+
     va_list ap;
     va_start(ap, format);
 
@@ -48,6 +51,9 @@ void log_msg(const char *format, ...)
 // Duplicated here for convenience.
 void log_fi (struct fuse_file_info *fi)
 {
+   if (LOG_OFF)
+                return;
+
     /** Open flags.  Available in open() and release() */
     //	int flags;
 	log_struct(fi, flags, 0x%08x, );
@@ -88,6 +94,9 @@ void log_fi (struct fuse_file_info *fi)
 // <bits/stat.h>; this is indirectly included from <fcntl.h>
 void log_stat(struct stat *si)
 {
+    if (LOG_OFF)
+                return;
+
     //  dev_t     st_dev;     /* ID of device containing file */
 	log_struct(si, st_dev, %lld, );
 	
@@ -131,6 +140,9 @@ void log_stat(struct stat *si)
 
 void log_statvfs(struct statvfs *sv)
 {
+    if (LOG_OFF)
+                return;
+
     //  unsigned long  f_bsize;    /* file system block size */
 	log_struct(sv, f_bsize, %ld, );
 	
@@ -168,6 +180,9 @@ void log_statvfs(struct statvfs *sv)
 
 void log_utime(struct utimbuf *buf)
 {
+	if (LOG_OFF)
+                return;
+
 	//    time_t actime;
 	log_struct(buf, actime, 0x%08lx, );
 	

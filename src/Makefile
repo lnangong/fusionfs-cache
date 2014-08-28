@@ -1,18 +1,21 @@
-FUSEINC=-D_FILE_OFFSET_BITS=64 -I/home/dzhao/bin/libfuse/include/fuse
-FUSELIB=-pthread -L/home/dzhao/bin/libfuse/lib64 -lfuse -lrt -ldl
-GBUFLIB=-L/home/dzhao/bin/gbuffer/lib64
+FUSEINC=-D_FILE_OFFSET_BITS=64 -I/home/roy/project/fuse/include/fuse
+FUSELIB=-pthread -L/home/roy/project/fuse/lib -lfuse -lrt -ldl
+GBUFLIB=-L/home/roy/project/gbuffer/lib
 
-fusionfs : fusionfs.o util.o log.o
-	gcc -g -Wall -o fusionfs fusionfs.o util.o log.o -Lzht/lib -lzht -lstdc++ $(GBUFLIB) -lprotobuf -lpthread -Lffsnet -lffsnet_bridger ${FUSELIB}
+fusionfs : royfusion.o util.o roycache.o log.o
+	gcc -g -Wall -o fusionfs royfusion.o util.o roycache.o log.o -Lzht/lib -lzht -lstdc++ $(GBUFLIB) -lprotobuf -lpthread -Lffsnet -lffsnet_bridger ${FUSELIB} 
 
-fusionfs.o : fusionfs.c log.h params.h util.h
-	gcc -g -Wall ${FUSEINC} -c fusionfs.c -L./ffsnet -lffsnet_bridger 
-	
-util.o : util.c log.h params.h
-	gcc -g -Wall ${FUSEINC} -c util.c -L./zht/lib -lzht -lstdc++ -lprotobuf -lpthread	
+royfusion.o : royfusion.c log.h royparams.h util.h
+	gcc -g -Wall ${FUSEINC} -c royfusion.c -L./ffsnet -lffsnet_bridger 
 
-log.o : log.c log.h params.h
-	gcc -g -Wall ${FUSEINC} -c log.c
+roycache.o : roycache.c log.h royparams.h  util.h 
+	gcc -g -Wall ${FUSEINC} -c roycache.c 
+
+util.o : util.c log.h royparams.h util.h   
+	gcc -g -Wall ${FUSEINC} -c util.c -L./zht/lib -lzht -lstdc++ -lprotobuf -lpthread 
+
+log.o : log.c log.h royparams.h
+	gcc -g -Wall ${FUSEINC} -c log.c 
 
 clean:
 	rm -f fusionfs *.o
