@@ -5,7 +5,7 @@
  */
 
 
-#include "royparams.h"
+#include "params.h"
 #include "util.h"
 #include <ctype.h>
 #include <dirent.h>

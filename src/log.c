@@ -3,7 +3,7 @@
 // its data structures.  This file contains macros and functions to
 // accomplish this.
 
-#include "royparams.h"
+#include "params.h"
 
 #include <fuse.h>
 #include <stdarg.h>

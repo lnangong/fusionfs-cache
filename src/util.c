@@ -16,7 +16,7 @@
 #include <arpa/inet.h>
 #include <ifaddrs.h>
 
-#include "royparams.h"
+#include "params.h"
 #include "util.h"
 
 #include <ctype.h>
