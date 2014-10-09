@@ -1,8 +1,0 @@
-1)	Q: FUSE 2.8 not found
-	A: Try `sudo ldconfig` first. If not work, `sudo ln -s /usr/local/lib/libfuse.so.2.8.5 /lib/libfuse.so.2` 
-
-2)	Q: xxxx.so not found
-	A: Add the library path to /etc/ld.so.conf, and run `sudo ldconfig`. If not work, export $LD_LIBRARY_PATH
-
-3) 	Q: xxxx:google::package not found
-	A: Try to change the order of the libraries
