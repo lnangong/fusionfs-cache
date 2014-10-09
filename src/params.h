@@ -70,7 +70,7 @@ typedef struct _inode_t
         int inSSD; // I'm still thinking if this's necessary
         int freq; //for LFU
         time_t atime; //last access time
-		int ref_bit; //R bit used for Clock algorithm
+	int ref_bit; //R bit used for Clock algorithm
 
 }
 inode_t;
