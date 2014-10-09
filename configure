@@ -1,1 +1,0 @@
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/mnt/common/dzhao/fusionFS/src/ffsnet:/mnt/common/dzhao/fusionFS/src/udt/src:/mnt/common/dzhao/gbuf/lib
