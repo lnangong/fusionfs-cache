@@ -1,7 +1,0 @@
-#!/bin/sh
-for i in 01 02 03 04 06 07 08 09 10 11 
-do
-	echo 
-	echo ----- Cleaning up scratch data on hec-$i
-	ssh hec-$i 'nfs/fusionFS/clearRootDir; ls fusion_root/' 
-done
