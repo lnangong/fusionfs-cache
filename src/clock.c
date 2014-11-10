@@ -1,7 +1,11 @@
-/* Clock Caching Algorithm
- * Developed by Long Nangong
- * lnangong@hawk.iit.edu
- * 12/6/2013             
+/**
+ *	clock.c--Clock Caching Algorithm
+ *
+ *	Copyright (c) 2014, Long(Ryan) Nangong.
+ *	All right reserved.
+ *
+ *	Email: lnangong@hawk.iit.edu
+ *	Created on: 12/6/2013             
  */
 
 

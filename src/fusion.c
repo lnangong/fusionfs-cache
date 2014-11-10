@@ -2,6 +2,7 @@
  * fusionfs.c
  *
  * Author: dongfang@ieee.org
+ *	   Long(Ryan) Nangong, lnangong@hawk.iit.edu
  *
  * Update history:
  * 	07/19/2012:
